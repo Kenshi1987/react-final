@@ -5,10 +5,13 @@ import CheckOut from './components/CheckOut/CheckOut';
 import Cart from './components/Cart/Cart';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import Navigation from './components/Navigation/Navigation'
+import CartContextComponent from './context/CartContextComponent';
 
-function App() {
+
+export default function App() { 
   return (
     <>
+      <CartContextComponent>
       <BrowserRouter>
       <Navigation/>
       <Routes>
@@ -17,13 +20,12 @@ function App() {
         <Route path='/Item/:idItem' element = {<ItemDetailContainer/>}/>
         <Route path='/CheckOut' element = {<CheckOut/>}/>
         <Route path='/Cart' element = {<Cart/>}/>
-      </Routes>
-      
-      
-      
+      </Routes>      
       </BrowserRouter>
+      </CartContextComponent>
+      
     </>
   );
 }
 
-export default App;
+

@@ -1,10 +1,12 @@
 import React from 'react'
+
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
 export default function Item({product}) {
-  return (
+  return <>
+    
     <div className='m-2'>
     <Card style={{ width: '18rem', height:'30rem' }}>
       <Card.Img style={{height:'16rem', width:'100%'}}variant="top" src={product.img} />
@@ -19,7 +21,8 @@ export default function Item({product}) {
       </Card.Body>
     </Card>
     </div>
-  );
+    </>
+  
 }
 
 
