@@ -28,9 +28,7 @@ export default function ItemCount({product}) {
  }
   
     useEffect(()=>{
-      console.log(cart)
-          
-    },[cart]);
+          },[cart]);
 
      return (
     <div className='m-5'>
