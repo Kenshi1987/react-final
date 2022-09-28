@@ -1,7 +1,9 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { createContext } from 'react'
+import { createContext } from 'react';
+import { Toaster, toast } from 'react-hot-toast';
+
 
 export const cartContext = createContext();
 
@@ -30,6 +32,7 @@ export default function CartContextComponent({children}) {
 
     function deleteFromCart(id){
         setCart(cart.filter((item) => item.id !== id));
+        toast.error('Producto Eliminado',{duration:'150'})
     }
 
     function deleteAllFromCart(){
@@ -44,9 +47,12 @@ export default function CartContextComponent({children}) {
 
     
 
+    
+
   return (
     <cartContext.Provider value={{cart, addToCart, totalCount, totalToPay, deleteFromCart, deleteAllFromCart}}>
         {children}
+        <Toaster/>
     </cartContext.Provider>
   )
 }

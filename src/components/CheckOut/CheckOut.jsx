@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { cartContext } from '../../context/CartContextComponent';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 
+
 export default function CheckOut() {
   const {totalToPay, cart, deleteAllFromCart} = useContext(cartContext);
   const [name, setName] = useState ("");
@@ -33,7 +34,7 @@ export default function CheckOut() {
   return (
     <>
     {orderId
-    ? "Gracias por su Compra. Tu id es : " + orderId 
+    ? "Gracias por su Compra. Tu id es : " + orderId  + "Productos comprados" + cart + "Precio Total" + totalToPay + "Te va a llegar el detalle al" + email
     :
     
     <div className="text-center mt-5" >
@@ -41,7 +42,7 @@ export default function CheckOut() {
     <Form className="text-center"style={{width:"auto"}}>
       <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Label>Nombre</Form.Label>
-        <Form.Control type="name" placeholder="Ingrese Nombre" onChange={(e)=>setName(e.target.value)}/>
+        <Form.Control type="name required" placeholder="Ingrese Nombre" onChange={(e)=>setName(e.target.value)}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail" >
         <Form.Label>Email</Form.Label>

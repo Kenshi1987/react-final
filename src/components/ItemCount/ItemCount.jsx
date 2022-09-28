@@ -4,12 +4,17 @@ import { useContext , useState} from 'react';
 import {Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { cartContext } from '../../context/CartContextComponent';
+import { Toaster, toast } from 'react-hot-toast';
+
+
 
 export default function ItemCount({product}) {
  
  const [count, setCount] = useState(1);
  const [removeButton, setRemoveButton] = useState (false);
  const { cart, addToCart } = useContext (cartContext);
+ 
+ 
 
  function sum(){
   setCount(count + 1);
@@ -24,8 +29,9 @@ export default function ItemCount({product}) {
  function onAdd(){  
  addToCart(product, count);
  setRemoveButton(true);
-
- }
+ toast.success('Producto agregado al carrito', {duration:'150'})
+ 
+}
   
     useEffect(()=>{
           },[cart]);
@@ -36,6 +42,7 @@ export default function ItemCount({product}) {
       <Button className="btn btn-success btn-lg m-3" onClick={res} disabled={count===1}>-</Button>
       <span className='fs-4 fw-bold'>{count}</span>
       <Button className="btn btn-success btn-lg m-3" onClick={sum} disabled={count===product.stock}>+</Button>
+      
 
       {removeButton ? (
         
@@ -49,7 +56,10 @@ export default function ItemCount({product}) {
         </>
       ): (
       <Button className="btn btn-success btn-lg m-3" onClick={()=>onAdd(count)} disabled={count ===0}>Agregar al Carrito</Button>
-      )}   
+      )}  
+
+      <Toaster/>
+    
       
     </div>
   );
