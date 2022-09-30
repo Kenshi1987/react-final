@@ -8,7 +8,7 @@ import CartWidget from '../CartWidget/CartWidget';
 
 export default function Navigation() {
   return (
-    <Navbar bg="light" expand="md" className='position-sticky'>
+    <Navbar bg="light" expand="md" className='sticky-top'>
       <Container>
         <Link to="/" style = {{textDecoration: "none"}}>
         <Navbar.Brand>Elementos</Navbar.Brand>
