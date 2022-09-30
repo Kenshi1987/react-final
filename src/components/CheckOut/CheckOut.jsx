@@ -5,10 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { cartContext } from '../../context/CartContextComponent';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import Swal from 'sweetalert2'
 import './CheckOut.css'
-
-
+import { Link } from 'react-router-dom';
 
 export default function CheckOut() {
 
@@ -17,7 +15,6 @@ export default function CheckOut() {
   const [tel, setTel] = useState ("");
   const [email, setEmail] = useState ("");
   const [orderId, setOrderId] = useState("");
-
 
   function validateForm(){
     const order = {
@@ -38,18 +35,16 @@ export default function CheckOut() {
   return (
     <>
     {orderId
-    ? Swal.fire({
-      icon: 'success',
-      title: 'Gracias por su Compra!',
-      text: 'Tu numero de ID es '+ orderId,
-      confirmButtonText: '<a href="/" id="linkpropio">Ir al Home</a>'    
-    })
-    
-    :
-    
+    ?  
+      <div>
+      <p className='text-center fs-2'>Gracias por su compra. Su numero de ID es {orderId}.</p>
+      <Link to='/' style={{textDecoration:'none', color:'white'}}><Button className='btn btn-success d-flex flex-wrap justify-content-center text-center'>Ir al Home</Button></Link>
+      </div>
+
+    :    
     <div className="text-center m-5 d-flex align-items-center justify-content-center flex-column" >
     <h1 className='text-center'>Formulario de Contacto</h1>
-    <div className='w-50 text-center border border-3 mt-3 p-5'>
+    <div className='w-75 text-center border border-3 mt-3 p-1'>
     
     <Form className="text-center" style={{width:"auto"}}>
       <Form.Group className="mb-3" controlId="formBasicText">

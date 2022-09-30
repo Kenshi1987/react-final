@@ -50,9 +50,12 @@ export default function CartContextComponent({children}) {
     
 
   return (
+    <>
     <cartContext.Provider value={{cart, addToCart, totalCount, totalToPay, deleteFromCart, deleteAllFromCart}}>
-        {children}
-        <Toaster/>
+        {children}        
     </cartContext.Provider>
+    <Toaster/>
+
+    </>
   )
 }
